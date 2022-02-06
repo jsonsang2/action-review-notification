@@ -43,13 +43,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.Client = exports.Always = exports.Custom = exports.Cancelled = exports.Failure = exports.Success = void 0;
+exports.Client = exports.Always = exports.Custom = exports.Cancelled = exports.VeryGood = exports.Excellent = void 0;
 const core = __importStar(__nccwpck_require__(2186));
 const github_1 = __nccwpck_require__(5438);
 // eslint-disable-next-line sort-imports
 const webhook_1 = __nccwpck_require__(1095);
-exports.Success = 'success';
-exports.Failure = 'failure';
+exports.Excellent = 'Excellent';
+exports.VeryGood = 'VeryGood';
 exports.Cancelled = 'cancelled';
 exports.Custom = 'custom';
 exports.Always = 'always';
@@ -94,11 +94,11 @@ class Client {
     // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
     injectColor() {
         switch (this.with.status) {
-            case exports.Success:
+            case exports.Excellent:
                 return 'good';
-            case exports.Cancelled:
+            case exports.VeryGood:
                 return 'warning';
-            case exports.Failure:
+            case exports.Cancelled:
                 return 'danger';
         }
         throw new Error(`invalid status: ${this.with.status}`);
@@ -107,16 +107,16 @@ class Client {
     injectText(value) {
         let text = '';
         switch (this.with.status) {
-            case exports.Success:
-                text += this.mentionText(exports.Success);
+            case exports.Excellent:
+                text += this.mentionText(exports.Excellent);
                 text += this.insertText(':white_check_mark: Succeeded GitHub Actions\n', value);
                 return text;
             case exports.Cancelled:
                 text += this.mentionText(exports.Cancelled);
                 text += this.insertText(':warning: Canceled GitHub Actions\n', value);
                 return text;
-            case exports.Failure:
-                text += this.mentionText(exports.Failure);
+            case exports.VeryGood:
+                text += this.mentionText(exports.VeryGood);
                 text += this.insertText(':no_entry: Failed GitHub Actions\n', value);
                 return text;
         }

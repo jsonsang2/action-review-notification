@@ -8,10 +8,10 @@ import {
   IncomingWebhookSendArguments
 } from '@slack/webhook'
 
-export const Success = 'success'
-type SuccessType = 'success'
-export const Failure = 'failure'
-type FailureType = 'failure'
+export const Excellent = 'Excellent'
+type SuccessType = 'Excellent'
+export const VeryGood = 'VeryGood'
+type FailureType = 'VeryGood'
 export const Cancelled = 'cancelled'
 type CancelledType = 'cancelled'
 export const Custom = 'custom'
@@ -85,11 +85,11 @@ export class Client {
   // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
   injectColor() {
     switch (this.with.status) {
-      case Success:
+      case Excellent:
         return 'good'
-      case Cancelled:
+      case VeryGood:
         return 'warning'
-      case Failure:
+      case Cancelled:
         return 'danger'
     }
     throw new Error(`invalid status: ${this.with.status}`)
@@ -99,8 +99,8 @@ export class Client {
   injectText(value: string) {
     let text = ''
     switch (this.with.status) {
-      case Success:
-        text += this.mentionText(Success)
+      case Excellent:
+        text += this.mentionText(Excellent)
         text += this.insertText(
           ':white_check_mark: Succeeded GitHub Actions\n',
           value
@@ -110,8 +110,8 @@ export class Client {
         text += this.mentionText(Cancelled)
         text += this.insertText(':warning: Canceled GitHub Actions\n', value)
         return text
-      case Failure:
-        text += this.mentionText(Failure)
+      case VeryGood:
+        text += this.mentionText(VeryGood)
         text += this.insertText(':no_entry: Failed GitHub Actions\n', value)
         return text
     }
