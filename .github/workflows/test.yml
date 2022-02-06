@@ -22,3 +22,5 @@ jobs:
       - uses: ./
         with:
           status: "VeryGood"
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}

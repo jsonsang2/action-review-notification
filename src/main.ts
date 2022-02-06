@@ -36,13 +36,13 @@ async function run(): Promise<void> {
         icon_url,
         channel,
         fields,
-        job_name,
+        job_name
       },
       github_token,
       github_base_url,
       process.env.SLACK_WEBHOOK_URL
     )
-    await client.send(await client.custom(custom_payload))
+    await client.send(await client.prepare(custom_payload));
   } catch (error) {
     if (error instanceof Error) core.setFailed(error.message)
   }

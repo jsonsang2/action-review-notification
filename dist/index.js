@@ -240,9 +240,9 @@ function run() {
                 icon_url,
                 channel,
                 fields,
-                job_name,
+                job_name
             }, github_token, github_base_url, process.env.SLACK_WEBHOOK_URL);
-            yield client.send(yield client.custom(custom_payload));
+            yield client.send(yield client.prepare(custom_payload));
         }
         catch (error) {
             if (error instanceof Error)
