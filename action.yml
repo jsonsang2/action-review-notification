@@ -6,6 +6,10 @@ inputs:
     description: Specify success or failure or cancelled or custom.
     default: "Excellent"
     required: true
+  github_token:
+    description: Use this if you wish to use a different GitHub token than the one provided by the workflow.
+    required: false
+    default: ${{ github.token }}
 runs:
   using: 'node12'
   main: 'dist/index.js'
