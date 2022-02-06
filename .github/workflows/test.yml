@@ -20,7 +20,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: ./
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
         with:
           status: "VeryGood"
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
