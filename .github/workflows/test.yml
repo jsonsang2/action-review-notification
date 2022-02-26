@@ -5,6 +5,8 @@ on: # rebuild any PRs and main branch changes
     branches:
       - main
       - 'releases/*'
+  pull_request_review_comment:
+    types: [created,edited,deleted]
 
 jobs:
   build: # make sure build/ci work properly
