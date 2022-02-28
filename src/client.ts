@@ -66,6 +66,7 @@ export class Client {
     core.info('====================================')
     core.info(payload)
     core.info('====================================')
+
     /* eslint-enable */
     return template
   }
