@@ -63,6 +63,9 @@ export class Client {
   async custom(payload: string) {
     /* eslint-disable no-var */
     var template: IncomingWebhookSendArguments = eval(`template = ${payload}`)
+    core.info('====================================')
+    core.info(payload)
+    core.info('====================================')
     /* eslint-enable */
     return template
   }
