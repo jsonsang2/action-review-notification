@@ -70,6 +70,9 @@ class Client {
         return __awaiter(this, void 0, void 0, function* () {
             /* eslint-disable no-var */
             var template = eval(`template = ${payload}`);
+            core.info('====================================');
+            core.info(payload);
+            core.info('====================================');
             /* eslint-enable */
             return template;
         });
@@ -242,7 +245,8 @@ function run() {
                 fields,
                 job_name
             }, github_token, github_base_url, process.env.SLACK_WEBHOOK_URL);
-            yield client.send(yield client.prepare(custom_payload));
+            yield client.send('hello');
+            //await client.send(await client.prepare(custom_payload));
         }
         catch (error) {
             if (error instanceof Error)
