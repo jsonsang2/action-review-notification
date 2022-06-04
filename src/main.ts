@@ -3,6 +3,7 @@ import {Client} from './client'
 
 async function run(): Promise<void> {
   try {
+
     const status: string = core.getInput('status')
     const mention = core.getInput('mention')
     const author_name = core.getInput('author_name')
