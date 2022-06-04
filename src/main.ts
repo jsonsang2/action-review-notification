@@ -42,7 +42,6 @@ async function run(): Promise<void> {
       github_base_url,
       process.env.SLACK_WEBHOOK_URL
     )
-
     await client.send('hello')
     //await client.send(await client.prepare(custom_payload));
   } catch (error) {
