@@ -1,5 +1,6 @@
 import * as core from '@actions/core'
 import {Client} from './client'
+const github = require('@actions/github');
 
 async function run(): Promise<void> {
   try {
@@ -42,7 +43,11 @@ async function run(): Promise<void> {
       github_base_url,
       process.env.SLACK_WEBHOOK_URL
     )
-    await client.send('hello')
+
+    const payload = JSON.stringify(github.context.payload, undefined, 2)
+    core.debug(`The event payload: ${payload}`)
+
+    await client.send(payload)
     //await client.send(await client.prepare(custom_payload));
   } catch (error) {
     if (error instanceof Error) core.setFailed(error.message)
