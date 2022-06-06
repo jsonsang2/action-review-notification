@@ -212,6 +212,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const core = __importStar(__nccwpck_require__(2186));
 const client_1 = __nccwpck_require__(1565);
+const github = __nccwpck_require__(5438);
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
@@ -245,7 +246,9 @@ function run() {
                 fields,
                 job_name
             }, github_token, github_base_url, process.env.SLACK_WEBHOOK_URL);
-            yield client.send('hello');
+            const payload = JSON.stringify(github.context.payload, undefined, 2);
+            core.debug(`The event payload: ${payload}`);
+            yield client.send(payload);
             //await client.send(await client.prepare(custom_payload));
         }
         catch (error) {
